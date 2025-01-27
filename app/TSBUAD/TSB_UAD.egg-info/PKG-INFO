@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: TSB_UAD
+Version: 0.0.3
+Summary: Time Series Anomaly Detection Benchmark
+Home-page: https://github.com/TheDatumOrg/TSB-UAD
+Author: The DATUM Lab
+Author-email: john@paparrizos.org
+License: Apache-2.0 license
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+License-File: LICENSE
+Requires-Dist: numpy>=1.24.3
+Requires-Dist: matplotlib>=3.7.5
+Requires-Dist: pandas>=2.0.3
+Requires-Dist: arch>=5.3.1
+Requires-Dist: tsfresh>=0.20.2
+Requires-Dist: hurst>=0.0.5
+Requires-Dist: tslearn>=0.6.3
+Requires-Dist: cython>=3.0.10
+Requires-Dist: scikit-learn>=1.3.2
+Requires-Dist: stumpy>=1.12.0
+Requires-Dist: tensorflow>=2.13.0
+Requires-Dist: networkx>=3.1
