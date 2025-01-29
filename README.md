@@ -9,21 +9,42 @@
 
 KDSelector proposes a novel knowledge-enhanced and data-efficient framework for learning a neural network (NN)-based model selector in the context of time series anomaly detection (TSAD). It aims to address the limitations of existing model selection methods, which often fail to fully utilize the knowledge in historical data and are inefficient in terms of training speed. 
 
+[![Please view our demonstration video. ](./app/fig/video_cover.png)]( https://youtu.be/2uqupDWvTF0.)
+
 ## Framework
 
 We introduce a novel neural network (NN)-based selector learning framework, which serves as the core component of our system. For a comprehensive understanding of its architecture and implementation, please refer to the detailed technical report available at [KDSelector Technical Report](https://github.com/chenyuanTKCY/KDSelector/blob/master/report/KDSelector%20Technical%20Report.pdf).
 
 ![Framework](./app/fig/System_Overview.png)
 
-### Reference
+<!-- ### Reference
 
-> Zhiyu Liang, Dongrui Cai, Chenyuan Zhang, Zheng Liang, Chen Liang, Bo Zheng, Shi Qiu, Jin Wang, and Hongzhi Wang. 2025. KDSelector: AKnowledge-Enhanced and Data-Efficient Model Selector Learning Framework for Time Series Anomaly Detection. In Companion of the 2025 International Conference on Management of Data (SIGMOD-Companion ’25), June 22–27, 2025, Berlin, Germany. 
+> Zhiyu Liang, Dongrui Cai, Chenyuan Zhang, Zheng Liang, Chen Liang, Bo Zheng, Shi Qiu, Jin Wang, and Hongzhi Wang. 2025. KDSelector: AKnowledge-Enhanced and Data-Efficient Model Selector Learning Framework for Time Series Anomaly Detection. In Companion of the 2025 International Conference on Management of Data (SIGMOD-Companion ’25), June 22–27, 2025, Berlin, Germany.  -->
 
 ## Installation
 
 To install KDSelector from source, you will need the following tools:
 - `git`
 - `conda` (anaconda or miniconda)
+
+#### Packages and tools setting
+
+The following key packages and their versions are used in this project:
+- **Python**
+  - python==3.8.20
+- **Data Analysis and Processing**
+  - pandas==2.0.3
+  - numpy==1.24.3
+  - scipy==1.10.1
+  - statsmodels==0.14.1
+
+- **Machine Learning and Deep Learning**
+  - scikit-learn==1.3.2
+  - tensorflow==2.13.1
+  - torch==1.13.1
+  - transformers==4.46.1
+
+For the complete list of dependencies, please refer to the `environment.yml` and `requirements.txt` files.
 
 #### Steps for installation
 
@@ -54,4 +75,3 @@ Start our system using the following command:
 streamlit run app/Home.py
 ```
 
-> Note: You can find our system demonstration on https://youtu.be/2uqupDWvTF0.

@@ -41,7 +41,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 关于系统的介绍部分
+
 st.markdown(
     """
     <div style='padding: 10px; background-color: #FFF3E0; border-radius: 8px; text-align: justify;'>
@@ -54,9 +54,9 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# 展示图片
+
 st.image("app/fig/System_Overview.png", caption="System Overview", use_container_width=True)
-# 功能部分
+
 st.markdown("""
     <div style='padding: 10px; background-color: #F1F8E9; border-radius: 8px;'>
         <h3>Key Features</h3>
@@ -71,18 +71,19 @@ st.markdown("""
     </div>
     <br>
 """, unsafe_allow_html=True)
-# 
-# 联系方式部分
+
 st.markdown("""
     <div style='padding: 10px; background-color: #E0F7FA; border-radius: 8px;'>
-        <h3>📬 Contact</h3>
+        <h3>📬 Communication</h3>
         <p style='font-size: 16px;'>For questions or feedback, feel free to reach out:</p>
-        <p style='font-size: 16px;'>📧 <a href='mailto:contact@example.com'>contact@example.com</a></p>
+        <p style='font-size: 16px;'>📧 <a href='mailto:zyliang@hit.edu.cn'>zyliang@hit.edu.cn</a></p>
+        <p style='font-size: 16px;'>Our code is available at:</p>
+        <p style='font-size: 16px;'><a href='http://github.com/chenyuanTKCY/KDSelector'>http://github.com/chenyuanTKCY/KDSelector</a></p>
     </div>
     <br>
 """, unsafe_allow_html=True)
 
-# 美化Footer
+
 st.markdown("""
     <hr>
     <div style='text-align: center; color: #000000;'>
