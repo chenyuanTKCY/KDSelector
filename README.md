@@ -11,7 +11,7 @@ KDSelector proposes a novel knowledge-enhanced and data-efficient framework for 
 
 ## Framework
 
-We propose a general NN-based selector learning framework serving as the internal of our system.
+We introduce a novel neural network (NN)-based selector learning framework, which serves as the core component of our system. For a comprehensive understanding of its architecture and implementation, please refer to the detailed technical report available at report/KDSelector Technical Report.pdf.
 
 ![Framework](./app/fig/System_Overview.png)
 
