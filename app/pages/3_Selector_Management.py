@@ -39,10 +39,13 @@ models = [ "convnet", "inception_time",  "resnet", "sit_conv_patch","sit_linear_
 # markdown_output = ["| id | Selector | Window Size $L$ | $t_{soft}$ | $ \ alpha$ | Output_Dim $H$ | $ \lambda $ | temperature for InfoNCE | nbits for LSH | nbins $p$ |",
                 #    "|------|-------|-------------|-----------|-----------|------------|------------|-----------|--------|-------|"]
 markdown_output = [
-    "| id | Selector | Window Size $L$ | $t_{soft}$ | $ \\alpha$ | Output_Dim $H$ | $ \\lambda $ | Temperature for InfoNCE | nbits for LSH | nbins $p$ |",
-    "|:---:|:--------:|:---------------:|:-----------:|:----------:|:--------------:|:------------:|:------------------------:|:-------------:|:----------:|"
-]
+     "| id | Selector | Window Size $L$ | $t_{soft}$ | $ \\alpha$ | Output_Dim $H$ | $ \\lambda $ | Temperature for InfoNCE | $r$ | nbits for LSH | nbins $p$ |",
+    "|:---:|:--------:|:---------------:|:-----------:|:----------:|:--------------:|:------------:|:------------------------:|:-------------:|:-------------:|:----------:|"
+ ]
 
+
+
+# st.markdown(markdown_output, unsafe_allow_html=True)
 # Dictionary to store unmatched model folders
 unmatched_output = ["| id | Selector | Window Size $L$ |", "|----|-------|-------------|"]
 
@@ -72,7 +75,7 @@ for folder in os.listdir(directory):
                     # Ensure it's a file
                     if os.path.isfile(file_path):
                         # Match the filename using the given pattern
-                        pattern = r"(?P<temperature_soft>-?\d+(\.\d+)?)_(?P<alpha>-?\d+(\.\d+)?)_(?P<output_dim>-?\d+)_(?P<lambda_CL>-?\d+(\.\d+)?)_(?P<temperature>-?\d+(\.\d+)?)_(?P<nbits>-?\d+)_(?P<nbins>-?\d+)_model"
+                        pattern = r"(?P<temperature_soft>-?\d+(\.\d+)?)_(?P<alpha>-?\d+(\.\d+)?)_(?P<output_dim>-?\d+)_(?P<lambda_CL>-?\d+(\.\d+)?)_(?P<temperature>-?\d+(\.\d+)?)_(?P<prune_ratio>-?\d+(\.\d+)?)_(?P<nbits>-?\d+)_(?P<nbins>-?\d+)_model"
                         match = re.match(pattern, file)
                         
                         if match:
@@ -82,11 +85,12 @@ for folder in os.listdir(directory):
                             output_dim = match.group("output_dim")
                             lambda_CL = match.group("lambda_CL")
                             temperature = match.group("temperature")
+                            prune_ratio = match.group("prune_ratio")
                             nbits = match.group("nbits")
                             nbins = match.group("nbins")
                             # Add the row to the Markdown output
                             markdown_output.append(
-                                f"| {index} |{model} | {window_size}| {temperature_soft} | {alpha} | {output_dim} | {lambda_CL} | {temperature} | {nbits} | {nbins} |"
+                                f"| {index} |{model} | {window_size}| {temperature_soft} | {alpha} | {output_dim} | {lambda_CL} | {temperature} | {prune_ratio} | {nbits} | {nbins} |"
                             )
                             index += 1
                         else:
@@ -97,6 +101,13 @@ for folder in os.listdir(directory):
 # Display the Markdown table if any entries exist
 if len(markdown_output) > 2:
     st.markdown("\n".join(markdown_output))
+    # table_content = (
+    #     "<div style='text-align: center;'>\n"
+    #     + "\n".join(markdown_output)
+    #    + "\n</div>"
+    # )
+    # st.markdown("\n".join(table_content))
+    # # st.markdown(markdown_output, unsafe_allow_html=True)
 else:
     st.warning("No matched selector files.")
 
@@ -122,6 +133,7 @@ with st.expander("Upload your configurations and weights", expanded=True):
         output_dim = params.get("output_dim",None)
         lambda_CL = params.get("lambda_CL",None)
         temperature = params.get("temperature",None)
+        prune_ratio = params.get("prune_ratio",None)
         nbits = params.get("nbits",None)
         nbins = params.get("nbins",None)
         if model in ["convnet", "inception_time",  "resnet", "sit_conv_patch","sit_linear_patch","sit_stem_original","sit_stem_relu"]:
@@ -129,7 +141,7 @@ with st.expander("Upload your configurations and weights", expanded=True):
                 if st.button("upload"):
                     directory_path = os.path.join(directory, f"{model}_{window_size}")
                     os.makedirs(directory_path,exist_ok=True)
-                    new_filename = f"{temperature_soft}_{alpha}_{output_dim}_{lambda_CL}_{temperature}_{nbits}_{nbins}_model"
+                    new_filename = f"{temperature_soft}_{alpha}_{output_dim}_{lambda_CL}_{temperature}_{prune_ratio}_{nbits}_{nbins}_model"
                     for folder in os.listdir(directory):
                         folder_path = os.path.join(directory, folder)
                         if folder.startswith(model) and folder.endswith(str(window_size)):

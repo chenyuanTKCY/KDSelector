@@ -42,6 +42,7 @@ class ModelExecutioner:
 		output_dim,
 		batch_size,  
 		window_size,
+		prune_ratio,
 		nbits,
 		nbins,
 		device='cuda',
@@ -84,6 +85,7 @@ class ModelExecutioner:
 		self.temperature_soft = temperature_soft
 		self.alpha = alpha
 		self.window_size = window_size
+		self.prune_ratio = prune_ratio
 		self.nbits = nbits
 		self.nbins = nbins
 		# self.T = T
@@ -124,7 +126,7 @@ class ModelExecutioner:
 				inputs_ts = inputs.squeeze(1).to(self.device, dtype=torch.float32)
 				x_ts = mlp_ts(inputs_ts)
 
-			
+				
 				q = nn.functional.normalize(x_ts, dim=1)
 				k = nn.functional.normalize(text_features, dim=1)
 				logits = torch.einsum('nc,ck->nk', [q, k.t()])
@@ -156,6 +158,8 @@ class ModelExecutioner:
 				# print(f"values :{loss}")
 
 			
+			# train_data.update(loss_InfoBtach)
+			# print(loss.shape[0])
 			train_data.update(loss)
 
 			loss = loss.mean()
@@ -230,7 +234,7 @@ class ModelExecutioner:
 
 		return np.mean(all_loss), np.mean(all_acc), all_acc_top_k
 
-
+	# def train(self, n_epochs, training_loader, validation_loader, verbose=True):
 	def train(self, n_epochs, train_data, validation_loader, verbose=True):
 		
 		# train_loader = torch.utils.data.DataLoader(train_data, batch_size=self.batch_size, sampler=train_data.sampler)
@@ -258,7 +262,7 @@ class ModelExecutioner:
 		model_path = os.path.join(
 			self.weights_dir,
 			self.model_name,
-			'{}_{}_{}_{}_{}_{}_{}_model'.format(self.temperature_soft,self.alpha,self.output_dim,self.lambda_CL,self.temperature,self.nbits,self.nbins)
+			'{}_{}_{}_{}_{}_{}_{}_{}_model'.format(self.temperature_soft,self.alpha,self.output_dim,self.lambda_CL,self.temperature,self.prune_ratio,self.nbits,self.nbins)
 		)
 		Path(os.path.join(self.weights_dir, self.model_name))\
 		   .mkdir(parents=True, exist_ok=True)
@@ -273,7 +277,7 @@ class ModelExecutioner:
 			# avg_loss, avg_acc = self.train_one_epoch(epoch, writer, training_loader)
 			avg_loss, avg_acc = self.train_one_epoch(epoch, writer, train_data)
 
-			
+		
 			train_time = perf_counter() - tic1
 
 			all_train_time += train_time
@@ -282,7 +286,7 @@ class ModelExecutioner:
 
 			# Run model on validation data to evaluate
 			avg_val_loss, avg_val_acc, val_topk_acc = self.evaluate(validation_loader)
-			
+		
 			val_time = perf_counter() - tic1 - train_time
 			all_val_time += val_time
 			avg_val_top1 = np.mean([x[1] for x in val_topk_acc])
@@ -456,7 +460,7 @@ class ModelExecutioner:
 		model_path = os.path.join(
 			self.weights_dir,
 			self.model_name,
-			'{}_{}_{}_{}_{}_{}_{}_model'.format(self.temperature_soft,self.alpha,self.output_dim,self.lambda_CL,self.temperature,self.nbits,self.nbins)
+			'{}_{}_{}_{}_{}_{}_{}_{}_model'.format(self.temperature_soft,self.alpha,self.output_dim,self.lambda_CL,self.temperature,self.prune_ratio,self.nbits,self.nbins)
 		)
 		Path(os.path.join(self.weights_dir, self.model_name))\
 		   .mkdir(parents=True, exist_ok=True)

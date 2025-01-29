@@ -69,16 +69,17 @@ def train(path,model,params):
     temperature = None
     temperature_soft = None
     alpha = None
+    prune_ratio = None
     nbits = None
     nbins = None
 
-    with st.expander(" Performance-Informed Selector Learning (PISL) ", expanded=True):
+    with st.sidebar.expander(" Performance-Informed Selector Learning (PISL) ", expanded=True):
         switchPISL = st.toggle("Open PISL", value=False)
         if switchPISL:
             alpha = st.slider("Relative importance of soft and hard labels $\\alpha$", min_value=0.0, max_value=1.0, step=0.01, value=0.5)
             temperature_soft = st.slider("Temperature $t_{soft}$for soft labels", min_value=0.0, max_value=1.0, step=0.01, value=0.5)
 
-    with st.expander(" Meta-Knowledge Integration (MKI) ", expanded=True):
+    with st.sidebar.expander(" Meta-Knowledge Integration (MKI) ", expanded=True):
         switch3 = st.toggle("Open MKI", value=False)
         if switch3:
         
@@ -111,9 +112,10 @@ def train(path,model,params):
             lambda_CL = st.slider("Importance of $$\mathcal{L}_{MKI} (\lambda)$$",  min_value=0.0, max_value=1.0, step=0.01, value=0.77)
             temperature = st.slider("Temperature $t$ for InfoNCE", min_value=0.0, max_value=1.0, step=0.01, value=0.25)
             
-    with st.expander(" Pruning-based Acceleration (PA) ", expanded=True):
+    with st.sidebar.expander(" Pruning-based Acceleration (PA) ", expanded=True):
         switch1 = st.toggle("Open PA", value=False)
         if switch1:
+            prune_ratio = st.slider("Pruning ratio $r$",min_value=0.0,max_value=1.0,step=0.1,value=0.8)
             nbits = st.slider("Number of bits for LSH", min_value=1, max_value=32, step=1, value=14)
             nbins = st.slider("Number of bins", min_value=1, max_value=32, step=1, value=8)
     
@@ -145,7 +147,7 @@ def train(path,model,params):
         current_epoch = 0
 
         
-        for temp_results in tdm.train_deep_model(path, model, split, batch, params, epochs, output_dim, nbits = nbits,nbins = nbins,lambda_CL = lambda_CL, temperature = temperature, temperature_soft = temperature_soft,alpha = alpha,path_save=path_save,switch1=switch1, switch3=switch3):
+        for temp_results in tdm.train_deep_model(path, model, split, batch, params, epochs, output_dim, prune_ratio=prune_ratio,nbits = nbits,nbins = nbins,lambda_CL = lambda_CL, temperature = temperature, temperature_soft = temperature_soft,alpha = alpha,path_save=path_save,switch1=switch1, switch3=switch3):
             
             current_epoch += 1
 
