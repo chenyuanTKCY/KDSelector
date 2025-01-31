@@ -15,7 +15,7 @@ KDSelector proposes a novel knowledge-enhanced and data-efficient framework for 
 
 We introduce a novel neural network (NN)-based selector learning framework, which serves as the core component of our system. For a comprehensive understanding of its architecture and implementation, please refer to the detailed technical report available at [KDSelector Technical Report](https://github.com/chenyuanTKCY/KDSelector/blob/master/report/KDSelector%20Technical%20Report.pdf).
 
-![Framework](./app/fig/System_Overview.png)
+![Framework](./app/fig/framework.pdf)
 
 <!-- ### Reference
 
@@ -29,20 +29,13 @@ To install KDSelector from source, you will need the following tools:
 
 #### Packages and tools setting
 
-The following key packages and their versions are used in this project:
+The following key tools and their versions are used in this project:
 - **Python**
   - python==3.8.20
-- **Data Analysis and Processing**
-  - pandas==2.0.3
-  - numpy==1.24.3
-  - scipy==1.10.1
-  - statsmodels==0.14.1
 
 - **Machine Learning and Deep Learning**
   - scikit-learn==1.3.2
-  - tensorflow==2.13.1
-  - torch==1.13.1
-  - transformers==4.46.1
+  - torch==1.13.
 
 For the complete list of dependencies, please refer to the `environment.yml` and `requirements.txt` files.
 
