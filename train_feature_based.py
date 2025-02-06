@@ -1,5 +1,6 @@
 ########################################################################
 #
+# @adaptor : Chenyuan Zhang Dongrui Cai
 # @author : Emmanouil Sylligardos
 # @when : Winter Semester 2022/2023
 # @where : LIPADE internship Paris
@@ -91,9 +92,9 @@ def train_feature_based(data_path, classifier_name, split_per=0.7, seed=None, re
 	
 	# Split data from labels
  
-	# 确保 training_data 是 DataFrame
+	
 	if not isinstance(training_data, pd.DataFrame):
-		raise TypeError("training_data 应该是 pandas.DataFrame 类型，但实际是 {}".format(type(training_data)))
+		raise TypeError("training_data is pandas.DataFrame type, but {}".format(type(training_data)))
 
 	y_train = training_data['label']
 	X_train = training_data.drop('label', axis=1)

@@ -95,8 +95,7 @@ class InfoBatch(Dataset):
         self.d = dataset[0][0].shape[0]  
         # self.index_lsh = faiss.IndexLSH(self.d, nbits)
         # self.index_lsh = faiss.IndexLSH(8, 64)
-        self.alpha = alpha  # 分段数
-
+        self.alpha = alpha  
         self.num_pruned_samples = 0
         self.cur_batch_index = None
 
@@ -282,8 +281,7 @@ class IBSampler(object):
 
     def reset(self):
         np.random.seed(self.iterations)
-        #测试
-        # print("-----------看看哪里有问题prune比较-----------", self.iterations)
+     
         if self.iterations > self.stop_prune:
             # print('we are going to stop prune, #stop prune %d, #cur iterations %d' % (self.iterations, self.stop_prune))
             if self.iterations == self.stop_prune + 1:
