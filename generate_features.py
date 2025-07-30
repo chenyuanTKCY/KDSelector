@@ -66,7 +66,7 @@ def generate_features(path,progress_callback=None):
 	# X_transformed = pd.merge(labels, X_transformed, left_index=True, right_index=True)
 	# X_transformed = pd.merge(pd.DataFrame({"label": labels, "soft_labels": soft_labels}), X_transformed, left_index=True, right_index=True)
 	X_transformed = pd.concat([pd.DataFrame({"label": labels}), soft_labels, X_transformed], axis=1)
-
+	print(X_transformed)
 	# Save new features
 	X_transformed.to_csv(os.path.join(path, new_name))
 	if progress_callback:
