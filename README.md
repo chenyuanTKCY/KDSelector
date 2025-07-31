@@ -9,8 +9,6 @@
 
 KDSelector proposes a novel knowledge-enhanced and data-efficient framework for learning a neural network (NN)-based model selector in the context of time series anomaly detection (TSAD). It aims to address the limitations of existing model selection methods, which often fail to fully utilize the knowledge in historical data and are inefficient in terms of training speed.
 
-[![Please view our demonstration video. ](./app/fig/video_cover.png)]( https://youtu.be/2uqupDWvTF0.)
-
 ## Framework
 
 We introduce a novel neural network (NN)-based selector learning framework, which serves as the core component of our system. For a comprehensive understanding of its architecture and implementation, please refer to the detailed technical report available at [KDSelector Technical Report](https://github.com/chenyuanTKCY/KDSelector/blob/master/report/KDSelector%20Technical%20Report.pdf).
@@ -70,4 +68,6 @@ Start our system using the following command:
 ```bash
 streamlit run app/Home.py
 ```
+## Click here for GUI DEMO
+[![Please view our demonstration video. ](./app/fig/video_cover.png)]( https://youtu.be/2uqupDWvTF0.)
 
