@@ -1,0 +1,35 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build and package artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+
+# Test, coverage, and tool caches
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+
+# Runtime outputs
+app/results/
+results/
+*.log
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

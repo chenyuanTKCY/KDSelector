@@ -1,15 +1,15 @@
-from app.detector.AE import ae
-from app.detector.CNN import CNN
-from app.detector.LSTM import LSTM
-from app.detector.HBOS import hbos
-from app.detector.LOF import lof
-from app.detector.IForest import iforest
-from app.detector.IForest1 import iforest1
-from app.detector.MP import mp
-from app.detector.NORMA import norma
-from app.detector.OCSVM import ocsvm
-from app.detector.PCA import pca
-from app.detector.POLY import poly
+from app.detector.ae import ae
+from app.detector.cnn import CNN
+from app.detector.lstm import LSTM
+from app.detector.hbos import hbos
+from app.detector.lof import lof
+from app.detector.isolation_forest import iforest
+from app.detector.isolation_forest_raw import iforest1
+from app.detector.matrix_profile import mp
+from app.detector.norma import norma
+from app.detector.ocsvm import ocsvm
+from app.detector.pca import pca
+from app.detector.poly import poly
 import tensorflow as tf
 def run_detector(pred_detector, sequence):
     tf.config.set_visible_devices([], 'GPU')

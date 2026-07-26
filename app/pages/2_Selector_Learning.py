@@ -6,7 +6,7 @@ import re
 import tempfile
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import util.deep_model as dp
-import util.MLClassifier as ml
+import util.ml_classifier as ml
 
 def methodConfiguration():
     
