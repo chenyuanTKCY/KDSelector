@@ -1,3 +1,5 @@
+
+
 <p align="center">
   <img src="app/fig/KD_Logo.png" width="150" alt="KDSelector logo">
 </p>
@@ -90,8 +92,8 @@ Train a deep selector:
 ```bash
 python train_deep_model.py \
   --path <dataset-directory> \
-  --model resnet \
-  --params models/configuration/resnet_default.json \
+  --model convnet \
+  --params models/configuration/convnet_default.json \
   --eval-true
 ```
 
