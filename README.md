@@ -14,7 +14,9 @@
   <img alt="Streamlit 1.40.1" src="https://img.shields.io/badge/Streamlit-1.40.1-FF4B4B?logo=streamlit&logoColor=white">
 </p>
 
-KDSelector learns to recommend a suitable anomaly detector for an unseen time series by reusing knowledge from historical benchmark results. It further employs data-efficient learning to reduce the cost of training the selector. The algorithm was published at **PVLDB 2026**; see the [paper](https://doi.org/10.14778/3819518.3819525) and [repository](https://github.com/chenyuanTKCY/KDSelectorAlgorithm) for details.
+KDSelector learns to recommend a suitable anomaly detector for an unseen time series by reusing knowledge from historical benchmark results. It further employs data-efficient learning to reduce selector-training cost. KDSelector is the algorithm behind our **SIGMOD 2025** work, while the extended algorithmic details and comprehensive analyses are presented in our **PVLDB 2026** paper; see the [paper](https://doi.org/10.14778/3819518.3819525) and [repository](https://github.com/chenyuanTKCY/KDSelectorAlgorithm) for details.
+
+
 
 <p align="center">
   <img src="app/fig/System_Overview.png" width="900" alt="KDSelector system overview">
